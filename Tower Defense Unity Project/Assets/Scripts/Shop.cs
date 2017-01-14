@@ -3,14 +3,16 @@ using System.Collections;
 
 public class Shop : MonoBehaviour {
 
+    public TurretBlueprint standardTurret;
+
     private BuildManager buildManager;
 
     private void Start()
     {
         this.buildManager = BuildManager.instance;
     }
-	public void OnStandardTurrentButton_Click()
+	public void SelectStandardTurret()
     {
-        this.buildManager.setTurretToBuild(this.buildManager.turretStandardPrefap);
+        this.buildManager.SelectTurretToBuild(standardTurret);
     }
 }

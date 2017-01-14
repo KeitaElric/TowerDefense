@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour {
     public GameObject BulletImpactEffectPrefap;
 
     public float speed = 70f;
+    public float explosionRadius = 0f;
+
+    public int damage = 50;
     public void Seek(Transform target)
     {
         this.m_target = target;
@@ -31,7 +34,37 @@ public class Bullet : MonoBehaviour {
     {
         GameObject BulletImpactEffectGameObject = (GameObject)Instantiate(BulletImpactEffectPrefap, transform.position, transform.rotation);
         Destroy(BulletImpactEffectGameObject, 2f);
-        Destroy(this.m_target.gameObject);
+
+        if (this.explosionRadius > 0f)
+        {
+            Explode();
+        } else
+        {
+            Damage(this.m_target);
+        }
+
         Destroy(gameObject);
+    }
+
+    void Explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.tag == "Enemy")
+            {
+                Damage(collider.transform);
+            }
+        }
+    }
+
+    void Damage(Transform enemy)
+    {
+        Enemy e = enemy.GetComponent<Enemy>();
+
+        if (e != null)
+        {
+            e.TakeDamage(this.damage);
+        }
     }
 }
