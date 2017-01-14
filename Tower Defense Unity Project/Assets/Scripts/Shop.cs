@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Shop : MonoBehaviour {
+
     private BuildManager buildManager;
 
     private void Start()
