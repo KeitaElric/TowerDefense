@@ -10,7 +10,6 @@ public class Shop : MonoBehaviour {
     }
 	public void OnStandardTurrentButton_Click()
     {
-        Debug.Log("a");
         this.buildManager.setTurretToBuild(this.buildManager.turretStandardPrefap);
     }
 }

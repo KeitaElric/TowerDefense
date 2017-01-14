@@ -9,11 +9,9 @@ public class BuildManager : MonoBehaviour {
     public GameObject turretStandardPrefap;
     private GameObject turretToBuild;
     public GameObject getTurretToBuild() {
-        Debug.Log("c");
         return turretToBuild;
     }
     public void setTurretToBuild(GameObject turret) {
-        Debug.Log("b");
         turretToBuild = turret;
     }
 }
