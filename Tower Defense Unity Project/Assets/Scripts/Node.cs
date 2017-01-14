@@ -30,7 +30,7 @@ public class Node : MonoBehaviour {
         GameObject turretToBuild = buildManager.getTurretToBuild();
         if (turretToBuild == null)
             return;
-        turret = Instantiate(turretToBuild, transform.position, transform.rotation);
+        turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
     }
     void OnMouseExit() {
         this.renderer.material.color = startColor;
